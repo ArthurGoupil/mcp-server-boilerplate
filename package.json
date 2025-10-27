@@ -1,0 +1,30 @@
+{
+  "name": "mcp-server-boilerplate",
+  "version": "1.0.0",
+  "description": "A simple MCP server using TypeScript",
+  "type": "module",
+  "main": "build/index.js",
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "express": "^4.18.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
