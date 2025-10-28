@@ -69,6 +69,32 @@ server.registerTool(
 	},
 );
 
+server.registerTool(
+	"your-new-tool", // change name
+	{
+		title: "My new tool", // change title with something relevant
+		description: "Description of my new tool", // change description with a description that will help the LLM understand when to use this tool
+		inputSchema: {
+			myInput: z.string().describe("An input for my new tool"), // change input schema to match your tool's inputs
+		},
+	},
+	async ({ myInput }) => {
+		// implement your tool's logic here
+
+		return {
+			content: [
+				{
+					type: "text",
+					text: `Result: ${myInput}`, // return a meaningful text result
+				},
+			],
+			structuredContent: {
+				myInput: myInput, // return structured content if applicable
+			},
+		};
+	},
+);
+
 // Set up Express server with HTTP transport
 const app = express();
 app.use(express.json());
