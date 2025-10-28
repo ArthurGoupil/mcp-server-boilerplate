@@ -18,7 +18,7 @@ pnpm install
 
 ## Development
 
-Run the server in development mode with auto-reload:
+Run the server in development mode:
 
 ```bash
 pnpm dev
@@ -59,28 +59,15 @@ Add this to your MCP configuration in VS Code:
 }
 ```
 
-### Using Claude Desktop
+### Using MCPJam
 
-Add to your `claude_desktop_config.json`:
-
-```json
-{
-  "mcpServers": {
-    "simple-mcp-server": {
-      "url": "http://localhost:3000/mcp",
-      "type": "http"
-    }
-  }
-}
-```
-
-### Using MCP Inspector
-
-Test your server with the MCP Inspector:
+Test your server with the MCPJam:
 
 ```bash
-npx @modelcontextprotocol/inspector http://localhost:3000/mcp
+pnpx @mcpjam/inspector@latest --port 4000
 ```
+
+Then create a new server with your MCP url.
 
 ## Available Tools
 

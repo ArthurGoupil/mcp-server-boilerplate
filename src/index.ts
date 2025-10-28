@@ -59,6 +59,12 @@ server.registerTool(
 					text: `${a} ${operation} ${b} = ${result}`,
 				},
 			],
+			structuredContent: {
+				firstNumber: a,
+				secondNumber: b,
+				operation: operation,
+				result: result,
+			},
 		};
 	},
 );
