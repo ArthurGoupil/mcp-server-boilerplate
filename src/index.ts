@@ -95,6 +95,33 @@ server.registerTool(
 	},
 );
 
+server.registerTool(
+	"movies",
+	{
+		title: "Movies",
+		description: "Get a list of movies",
+		inputSchema: {
+			title: z.string().describe("The title of the movie to search for"),
+		},
+	},
+	async ({ title }) => {
+		const response = await fetch(
+			`https://imdb.iamidiotareyoutoo.com/search?q=${title}`,
+		);
+		const data = await response.json();
+
+		return {
+			content: [
+				{
+					type: "text",
+					text: `Here are some matching movies: ${JSON.stringify(data)}`,
+				},
+			],
+			structuredContent: data,
+		};
+	},
+);
+
 // Set up Express server with HTTP transport
 const app = express();
 app.use(express.json());
