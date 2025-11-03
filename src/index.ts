@@ -122,6 +122,35 @@ server.registerTool(
 	},
 );
 
+server.registerTool(
+	"movie-details",
+	{
+		title: "Movie details",
+		description: "Get details about a specific movie",
+		inputSchema: {
+			IMDB_ID: z
+				.string()
+				.describe("The id of the movie. Can be found in the movie list."),
+		},
+	},
+	async ({ IMDB_ID }) => {
+		const response = await fetch(
+			`https://imdb.iamidiotareyoutoo.com/search?tt=${IMDB_ID}`,
+		);
+		const data = await response.json();
+
+		return {
+			content: [
+				{
+					type: "text",
+					text: `Here are some details about the given movie: ${JSON.stringify(data.short)}`,
+				},
+			],
+			structuredContent: data.short,
+		};
+	},
+);
+
 // Set up Express server with HTTP transport
 const app = express();
 app.use(express.json());
